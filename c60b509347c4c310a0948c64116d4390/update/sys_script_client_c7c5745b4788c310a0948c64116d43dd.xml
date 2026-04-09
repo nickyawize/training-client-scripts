@@ -13,18 +13,21 @@ Additional information: a VIP user is a user for whom the "VIP" field is set to 
         <isolate_script>true</isolate_script>
         <messages/>
         <name>Warn VIP on field</name>
-        <order/>
+        <order>100</order>
         <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
 	if (isLoading || newValue === '') {
 		return;
 	}
 
-	g_form.getReference('caller_id', function(caller) {
-		console.log('User', caller, caller.getValue('vip'));
-	});
+	ScriptLoader.getScripts('CustomUtils.jsdbx', function() {
 
-   //Type appropriate comment here, and begin script below
-   
+		g_form.getReference('caller_id', function(caller) {
+			if(CustomUtils.ToBoolean(caller.getValue('vip')))
+				g_form.showFieldMsg('caller_id', 'This user is VIP', 'warning');
+			else
+				g_form.hideFieldMsg('caller_id');
+		});
+	});
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -32,7 +35,7 @@ Additional information: a VIP user is a user for whom the "VIP" field is set to 
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>c7c5745b4788c310a0948c64116d43dd</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>Warn VIP on field</sys_name>
         <sys_overrides/>
         <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
@@ -40,7 +43,7 @@ Additional information: a VIP user is a user for whom the "VIP" field is set to 
         <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
         <sys_update_name>sys_script_client_c7c5745b4788c310a0948c64116d43dd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-04-09 20:50:21</sys_updated_on>
+        <sys_updated_on>2026-04-09 22:18:59</sys_updated_on>
         <table>incident</table>
         <type>onChange</type>
         <ui_type>10</ui_type>
