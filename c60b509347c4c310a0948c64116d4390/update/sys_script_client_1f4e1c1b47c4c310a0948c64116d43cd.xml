@@ -11,20 +11,43 @@
         <name>MI-P1 on Submit</name>
         <order/>
         <script><![CDATA[function onSubmit() {
-	
-	// We only check if Priority is Critical = P1
-	if(g_form.getIntValue('priority') !== 1)
-		return true;
-
-	if(!confirm("Creating a P1 ticket will trigger the MI process/emergency escalation. Do you want to proceed?"))
+    // Simple hint to prevent submit infinite loop
+    if (g_form.isTriggered || g_form.getIntValue('priority') !== 1)
 	{
-		nowapi.g_notification.show("warning", "You canceled the ticket creation", 6000);
+        // If confirmed via button, show success and allow submit
+        if (g_form.isTriggered)
+			delete g_form.isTriggered;
 
-		return false;
-	}
+		g_form.clearMessages();
+		g_form.addSuccessMessage("Ticket created successfully");
 
-	nowapi.g_notification.show("info", "Ticket created successfully", 6000);
+        return true;
+    }
 
+    // Trigger the Modal for validation
+    let gm = new GlideModal("glide_confirm_basic");
+
+    gm.setTitle("P1 Escalation Confirmation");
+    gm.setPreference("title", "Creating a P1 ticket will trigger the MI process. Proceed?");
+
+	// Action on Validation
+    gm.setPreference("onPromptComplete", function() {
+        g_form.isTriggered = true;
+        
+		let action = g_form.getActionName(); 
+		g_form.submit(action);
+    });
+	
+	// Action on Cancel
+    gm.setPreference("onPromptCancel", function() {
+		g_form.clearMessages();
+		g_form.addModerateMessage("You canceled the ticket creation");
+    });
+
+    gm.render();
+
+    // BLOCK the initial submission
+    return false;
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -32,7 +55,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>1f4e1c1b47c4c310a0948c64116d43cd</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>MI-P1 on Submit</sys_name>
         <sys_overrides/>
         <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
@@ -40,7 +63,7 @@
         <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
         <sys_update_name>sys_script_client_1f4e1c1b47c4c310a0948c64116d43cd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-04-09 17:46:05</sys_updated_on>
+        <sys_updated_on>2026-04-09 18:39:53</sys_updated_on>
         <table>incident</table>
         <type>onSubmit</type>
         <ui_type>10</ui_type>
