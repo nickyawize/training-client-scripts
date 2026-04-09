@@ -1,2 +1,2 @@
 # training-client-scripts
-Client scripts handson
+Client scripts handson. Ok
