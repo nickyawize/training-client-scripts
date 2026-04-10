@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="DELETE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Create a client script that makes incident state "Closed" not selectable for anyone who holds "itil" role.</description>
+        <field>state</field>
+        <global>true</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>Disable Closed State</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	if(g_user.hasRoleExactly('itil')) {
+		var stateFieldName = 'state';
+
+		if(g_form.getValue(stateFieldName) == 7) {
+			g_form.setValue(stateFieldName, '1');
+		}
+
+		// g_form.disableChoice('state', '7'); NOT WORKING
+		// https://servicenowguru.com/client-scripts-scripting/removing-disabling-choice-list-options/
+		g_form.removeOption(stateFieldName, '7');
+		g_form.showFieldMsg(stateFieldName, 'Ok Pk', 'warning');
+		
+		getMessage(
+			'custom_you_cannot_select_closed_state',
+			function(translations) {
+				debugger
+				console.log('Here');
+				g_form.showFieldMsg(stateFieldName, translations || 'You', 'warning');
+			}
+		);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-10 11:37:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>08c1d8e347444710a0948c64116d4373</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>Disable Closed State</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_update_name>sys_script_client_08c1d8e347444710a0948c64116d4373</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-10 13:26:25</sys_updated_on>
+        <table>incident</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Handson activities">c60b509347c4c310a0948c64116d4390</application>
+        <file_path/>
+        <instance_id>199e5a32ff5c6e5cc812f8e4fc4fd9be</instance_id>
+        <instance_name>dev302496</instance_name>
+        <name>sys_script_client_08c1d8e347444710a0948c64116d4373</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;
+    &lt;sys_script_client action="INSERT_OR_UPDATE"&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;applies_extended&gt;false&lt;/applies_extended&gt;
+        &lt;condition/&gt;
+        &lt;description&gt;Create a client script that makes incident state "Closed" not selectable for anyone who holds "itil" role.&lt;/description&gt;
+        &lt;field&gt;state&lt;/field&gt;
+        &lt;global&gt;true&lt;/global&gt;
+        &lt;isolate_script&gt;false&lt;/isolate_script&gt;
+        &lt;messages/&gt;
+        &lt;name&gt;Disable Closed State&lt;/name&gt;
+        &lt;order/&gt;
+        &lt;script&gt;&lt;![CDATA[function onLoad() {
+	if(g_user.hasRoleExactly('itil')) {
+		var stateFieldName = 'state';
+
+		if(g_form.getValue(stateFieldName) == 7) {
+			g_form.setValue(stateFieldName, '1');
+		}
+
+		// g_form.disableChoice('state', '7'); NOT WORKING
+		// https://servicenowguru.com/client-scripts-scripting/removing-disabling-choice-list-options/
+		g_form.removeOption(stateFieldName, '7');
+		g_form.showFieldMsg(stateFieldName, 'Ok Pk', 'warning');
+		
+		getMessage(
+			'custom_you_cannot_select_closed_state',
+			function(translations) {
+				debugger
+				console.log('Here');
+				g_form.showFieldMsg(stateFieldName, translations || 'You', 'warning');
+			}
+		);
+	}
+}]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2026-04-10 11:37:43&lt;/sys_created_on&gt;
+        &lt;sys_domain&gt;global&lt;/sys_domain&gt;
+        &lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;
+        &lt;sys_id&gt;08c1d8e347444710a0948c64116d4373&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;32&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Disable Closed State&lt;/sys_name&gt;
+        &lt;sys_overrides/&gt;
+        &lt;sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390"&gt;c60b509347c4c310a0948c64116d4390&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Handson activities"&gt;c60b509347c4c310a0948c64116d4390&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_script_client_08c1d8e347444710a0948c64116d4373&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2026-04-10 13:26:25&lt;/sys_updated_on&gt;
+        &lt;table&gt;incident&lt;/table&gt;
+        &lt;type&gt;onLoad&lt;/type&gt;
+        &lt;ui_type&gt;10&lt;/ui_type&gt;
+        &lt;view/&gt;
+    &lt;/sys_script_client&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-1906512216</payload_hash>
+        <record_name>Disable Closed State</record_name>
+        <reverted_from/>
+        <source/>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-10 15:26:57</sys_created_on>
+        <sys_id>334881ab47048710a0948c64116d4382</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19d7800e38a0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-10 15:26:57</sys_updated_on>
+        <type>Client Script</type>
+        <update_guid>ff4881ab09048710e8259d861f64ce81</update_guid>
+        <update_guid_history>d34789e7280487103089acaf15ee1374:1714247913,30a601a7f00487102fe8e97fd661fa9f:1037516046,121d28efc4008710466f1d6f304f3ef1:1669100402,debce42f52008710fda6d32153434f72:1945279614,817b242fd0008710118e495a61670e8e:-2031123460,ac5be8eb7a0087107d7eeda9502abbb7:87472273,8c2b64ebec0087102c356d676afe65cc:1749219277,821aa0e39ecc471044bd26dd3840e74d:872015279,17b9a8a71a8c4710a56682777574be71:1101547052,d0b96067208c471086115454d63db64a:510891531,fb69206f204c471051f0e72f673e5623:1648371414,63096863cb4c4710bd9772d678f9f7ae:-1277301105,2109e8234c4c47108a663dd477f661a3:-1626761574,fad8e8eb340c47101f9f1ff5384fafae:-2057125526,6bc8a0ab050c471057c4bccb58ea5198:-794797906,8b786423f10c471055d1f5e8bf965b31:-1830578114,bfc1202720c447103258c5205c065c6a:-1203284524,aeb028a3aac44710fe1d5ca85985ea12:-385888755,b900e0630dc4471085c797f65623dae4:1247506518,111f9cafab8447108a83c66eac2dae8e:-314003784,66ee50af6284471040da02e645aa6bf8:-1176743331,be2c546b1084471069e72bcd3718e7b9:-583817080,29ab142b018447101fdc797372f7899f:913054083,352a946727844710ae7f3e55d353a379:-1197416533,33a9102736844710efa38919452d4f97:-379577621,7769d8e32484471055c116424e6f11ff:1277056829,16c894a3e384471007b7d6508cb79693:-596453257,7a18dc23b384471023ca01fc529b8ead:-1303165020,04961c6fc6444710eaf15fb4edff40f4:-845193052,e276186f8f4447102a77bb5840e21715:713354627,a50598ab42444710add9ba1353163f6c:-2099467028,c5b49c6b5d4447104e90e8c58256722d:713354627,7194586b7e4447103193a9deefb57f80:-559644605,7d341c2bbe4447105f4d4e85dbd49617:2035144575,0714582b12444710b89336f0da6019cc:-2041026873,82d35ce7074447104d4e9a9fff3bf723:-489974982</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-10 15:42:46</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_client">sys_script_client</sys_db_object>
+        <sys_id>1c30cff152a44c778951f321bdfdf579</sys_id>
+        <sys_metadata>08c1d8e347444710a0948c64116d4373</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Disable Closed State</sys_name>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_parent display_value="Incident">b4211c11795632108bb291bde809c9e5</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_scope_delete display_value="">415278aa4b5b41dcafd3b7fbfa1e9924</sys_scope_delete>
+        <sys_update_name>sys_script_client_08c1d8e347444710a0948c64116d4373</sys_update_name>
+        <sys_update_version display_value="sys_script_client_08c1d8e347444710a0948c64116d4373">334881ab47048710a0948c64116d4382</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-10 15:42:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
