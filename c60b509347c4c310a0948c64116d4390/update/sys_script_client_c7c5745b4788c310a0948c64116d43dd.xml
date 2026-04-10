@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>On incident form, when a VIP user is selected as caller in the ticket then an information message is displayed  under the "Caller" field saying "This user is VIP."&#13;
+&#13;
+Remove the message if caller is changed  to empty or not VIP user.&#13;
+&#13;
+Additional information: a VIP user is a user for whom the "VIP" field is set to "True".</description>
+        <field>caller_id</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Warn VIP on field</name>
+        <order>100</order>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	if (isLoading || newValue === '') {
+		return;
+	}
+
+	ScriptLoader.getScripts('CustomUtils.jsdbx', function() {
+
+		g_form.getReference('caller_id', function(caller) {
+			if(CustomUtils.ToBoolean(caller.getValue('vip')))
+				g_form.showFieldMsg('caller_id', 'This user is VIP', 'warning');
+			else
+				g_form.hideFieldMsg('caller_id');
+		});
+	});
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-09 19:40:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c7c5745b4788c310a0948c64116d43dd</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>Warn VIP on field</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_update_name>sys_script_client_c7c5745b4788c310a0948c64116d43dd</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-09 22:18:59</sys_updated_on>
+        <table>incident</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
