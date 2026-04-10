@@ -13,8 +13,19 @@
         <script><![CDATA[function onLoad() {
 	// Joe employee has the usernmae value to 'employee'
 	if(g_user.userName === 'employee' || /joe employee/gi.test(g_user.getFullName())) {
-		g_form.cl
-		g_form.addFormMessage('You can not submit Incident. Report to manager for more.', 'error');		
+		g_form.clearMessages();
+		ScriptLoader.getScripts('CustomUtils.jsdbx', function() {
+		console.log('Yo papa', CustomUtils);
+
+		var messageName = 'custom_you_cannot_add_incident';
+
+		CustomUtils.i18nTranslate(
+				messageName, 
+				function(translations) {
+					g_form.addFormMessage(translations[messageName], 'error');
+				});
+		});
+
 	}
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
@@ -23,7 +34,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>21ed605b4748c310a0948c64116d439a</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Prevent Joe employe</sys_name>
         <sys_overrides/>
         <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
@@ -31,7 +42,7 @@
         <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
         <sys_update_name>sys_script_client_21ed605b4748c310a0948c64116d439a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-04-09 19:17:24</sys_updated_on>
+        <sys_updated_on>2026-04-10 22:58:36</sys_updated_on>
         <table>incident</table>
         <type>onLoad</type>
         <ui_type>10</ui_type>
