@@ -11,40 +11,54 @@
         <name>MI-P1 on Submit</name>
         <order/>
         <script><![CDATA[function onSubmit() {
-    // Simple hint to prevent submit infinite loop
-    if (g_form.isTriggered || g_form.getIntValue('priority') !== 1)
-	{
-        // If confirmed via button, show success and allow submit
-        if (g_form.isTriggered)
-			delete g_form.isTriggered;
+	ScriptLoader.getScripts('CustomUtils.jsdbx', function() {
 
-		g_form.clearMessages();
-		g_form.addSuccessMessage("Ticket created successfully");
+		var ticketCreatedMessage = 'custom_ticket_created';
+		var ticketEscalationConfirm = 'custom_ticket_escalation_confirm';
+		var ticketYouCanceled = 'custom_ticket_you_cancel';
 
-        return true;
-    }
+		CustomUtils.i18nTranslate(
+			[ticketCreatedMessage, ticketEscalationConfirm, ticketYouCanceled], 
+			function(translations) {
 
-    // Trigger the Modal for validation
-    let gm = new GlideModal("glide_confirm_basic");
+				// Simple hint to prevent submit infinite loop
+				if (g_form.isTriggered || g_form.getIntValue('priority') !== 1)
+				{
+					// If confirmed via button, show success and allow submit
+					if (g_form.isTriggered)
+						delete g_form.isTriggered;
 
-    gm.setTitle("P1 Escalation Confirmation");
-    gm.setPreference("title", "Creating a P1 ticket will trigger the MI process. Proceed?");
+					g_form.clearMessages();
+					g_form.addSuccessMessage(translations[ticketCreatedMessage]);
 
-	// Action on Validation
-    gm.setPreference("onPromptComplete", function() {
-        g_form.isTriggered = true;
-        
-		let action = g_form.getActionName(); 
-		g_form.submit(action);
-    });
-	
-	// Action on Cancel
-    gm.setPreference("onPromptCancel", function() {
-		g_form.clearMessages();
-		g_form.addModerateMessage("You canceled the ticket creation");
-    });
+					return true;
+				}
 
-    gm.render();
+				// Trigger the Modal for validation
+				let gm = new GlideModal("glide_confirm_basic");
+
+				gm.setTitle("Confirmation");
+				gm.setPreference("title", translations[ticketEscalationConfirm]);
+
+				// Action on Validation
+				gm.setPreference("onPromptComplete", function() {
+					g_form.isTriggered = true;
+					
+					let action = g_form.getActionName(); 
+					g_form.submit(action);
+				});
+				
+				// Action on Cancel
+				gm.setPreference("onPromptCancel", function() {
+					g_form.clearMessages();
+					g_form.addModerateMessage(translations[ticketYouCanceled]);
+				});
+
+				gm.render();
+
+			});
+	});
+
 
     // BLOCK the initial submission
     return false;
@@ -55,7 +69,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>1f4e1c1b47c4c310a0948c64116d43cd</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>MI-P1 on Submit</sys_name>
         <sys_overrides/>
         <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
@@ -63,7 +77,7 @@
         <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
         <sys_update_name>sys_script_client_1f4e1c1b47c4c310a0948c64116d43cd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-04-09 18:39:53</sys_updated_on>
+        <sys_updated_on>2026-04-10 22:39:49</sys_updated_on>
         <table>incident</table>
         <type>onSubmit</type>
         <ui_type>10</ui_type>
