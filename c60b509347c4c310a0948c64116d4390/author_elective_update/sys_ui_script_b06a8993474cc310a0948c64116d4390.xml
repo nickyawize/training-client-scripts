@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="DELETE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <ignore_in_now_experience>false</ignore_in_now_experience>
+        <name>CustomUtils</name>
+        <script><![CDATA[var CustomUtils = (function() {
+    return {
+        ToBoolean: function(val) {
+            return /true|1/i.test(val + '');
+        }
+    };
+})();]]></script>
+        <script_name/>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-09 21:00:41</sys_created_on>
+        <sys_id>b06a8993474cc310a0948c64116d4390</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CustomUtils</sys_name>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_update_name>sys_ui_script_b06a8993474cc310a0948c64116d4390</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-09 21:00:41</sys_updated_on>
+        <ui_type>0</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Handson activities">c60b509347c4c310a0948c64116d4390</application>
+        <file_path/>
+        <instance_id>199e5a32ff5c6e5cc812f8e4fc4fd9be</instance_id>
+        <instance_name>dev302496</instance_name>
+        <name>sys_ui_script_b06a8993474cc310a0948c64116d4390</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_script"&gt;
+    &lt;sys_ui_script action="INSERT_OR_UPDATE"&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;description/&gt;
+        &lt;global&gt;false&lt;/global&gt;
+        &lt;ignore_in_now_experience&gt;false&lt;/ignore_in_now_experience&gt;
+        &lt;name&gt;CustomUtils&lt;/name&gt;
+        &lt;script&gt;&lt;![CDATA[var CustomUtils = (function() {
+    return {
+        ToBoolean: function(val) {
+            return /true|1/i.test(val + '');
+        }
+    };
+})();]]&gt;&lt;/script&gt;
+        &lt;script_name/&gt;
+        &lt;sys_class_name&gt;sys_ui_script&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2026-04-09 21:00:41&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;b06a8993474cc310a0948c64116d4390&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;CustomUtils&lt;/sys_name&gt;
+        &lt;sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390"&gt;c60b509347c4c310a0948c64116d4390&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Handson activities"&gt;c60b509347c4c310a0948c64116d4390&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_ui_script_b06a8993474cc310a0948c64116d4390&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2026-04-09 21:00:41&lt;/sys_updated_on&gt;
+        &lt;ui_type&gt;0&lt;/ui_type&gt;
+        &lt;use_scoped_format&gt;false&lt;/use_scoped_format&gt;
+    &lt;/sys_ui_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-100979248</payload_hash>
+        <record_name>CustomUtils</record_name>
+        <reverted_from/>
+        <source>496cc997474cc310a0948c64116d431e</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-09 21:06:20</sys_created_on>
+        <sys_id>2d6c0d97474cc310a0948c64116d4328</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19d74113dcf0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-09 21:06:20</sys_updated_on>
+        <type>UI Script</type>
+        <update_guid>656c0d97604cc31066ffda02c497e828</update_guid>
+        <update_guid_history>656c0d97604cc31066ffda02c497e828:0,2ceb0957014cc3100514c00810dcffdb:-1429042902,321b0117934cc310d64a847031ad5857:1387443742</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-09 21:07:01</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_script">sys_ui_script</sys_db_object>
+        <sys_id>781cab9d48cb4067807a9eb0a2172fe9</sys_id>
+        <sys_metadata>b06a8993474cc310a0948c64116d4390</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CustomUtils</sys_name>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_scope_delete display_value="">415278aa4b5b41dcafd3b7fbfa1e9924</sys_scope_delete>
+        <sys_update_name>sys_ui_script_b06a8993474cc310a0948c64116d4390</sys_update_name>
+        <sys_update_version display_value="sys_ui_script_b06a8993474cc310a0948c64116d4390">2d6c0d97474cc310a0948c64116d4328</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-09 21:07:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
