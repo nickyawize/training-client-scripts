@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field>u_user_id</field>
+        <field_message/>
+        <field_message_type>none</field_message_type>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-10 17:58:22</sys_created_on>
+        <sys_id>8bba692347488710a0948c64116d43d9</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>u_user_id</sys_name>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_update_name>sys_ui_policy_action_8bba692347488710a0948c64116d43d9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-10 18:00:45</sys_updated_on>
+        <table>incident</table>
+        <ui_policy display_value="Once the Caller is filled in, the &quot;User ID&quot; field is displayed on the form">5bc8612f47088710a0948c64116d433d</ui_policy>
+        <value/>
+        <value_action>ignore</value_action>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=8bba692347488710a0948c64116d43d9"/>
+</record_update>
