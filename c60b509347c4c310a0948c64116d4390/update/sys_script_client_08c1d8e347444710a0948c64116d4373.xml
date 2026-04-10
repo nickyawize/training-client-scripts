@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Create a client script that makes incident state "Closed" not selectable for anyone who holds "itil" role.</description>
+        <field>state</field>
+        <global>true</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>Disable Closed State</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	if(g_user.hasRoleExactly('itil')) {
+		var stateFieldName = 'state';
+
+		if(g_form.getValue(stateFieldName) == 7) {
+			g_form.setValue(stateFieldName, '1');
+		}
+
+		// g_form.disableChoice('state', '7'); NOT WORKING
+		// https://servicenowguru.com/client-scripts-scripting/removing-disabling-choice-list-options/
+		g_form.removeOption(stateFieldName, '7');
+		
+		ScriptLoader.getScripts('CustomUtils.jsdbx', function() {
+			var messageName = 'custom_you_cannot_select_closed_state';
+
+			CustomUtils.i18nTranslate(
+				messageName,
+				function(translations) {
+					g_form.showFieldMsg(
+						stateFieldName, 
+						translations[messageName], 
+						'warning'
+					);
+				});
+		});
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-10 11:37:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>08c1d8e347444710a0948c64116d4373</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>Disable Closed State</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_update_name>sys_script_client_08c1d8e347444710a0948c64116d4373</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-10 15:22:32</sys_updated_on>
+        <table>incident</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
