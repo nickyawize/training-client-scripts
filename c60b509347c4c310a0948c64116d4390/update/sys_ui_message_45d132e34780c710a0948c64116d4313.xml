@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_message">
+    <sys_ui_message action="INSERT_OR_UPDATE">
+        <application/>
+        <code/>
+        <commented_message/>
+        <key>custom_user_is_vip</key>
+        <language>fq</language>
+        <message>Cet utilisateur est VIP</message>
+        <sys_class_name>sys_ui_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-10 23:08:09</sys_created_on>
+        <sys_id>45d132e34780c710a0948c64116d4313</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>custom_user_is_vip</sys_name>
+        <sys_package display_value="Handson activities" source="c60b509347c4c310a0948c64116d4390">c60b509347c4c310a0948c64116d4390</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Handson activities">c60b509347c4c310a0948c64116d4390</sys_scope>
+        <sys_update_name>sys_ui_message_45d132e34780c710a0948c64116d4313</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-10 23:10:01</sys_updated_on>
+    </sys_ui_message>
+</record_update>
