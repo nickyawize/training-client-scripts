@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="email_client=true,hasWorkflow=true,live_feed=true,all_tables.query_hints=true" audit="true" db_object_id="b4211c11795632108bb291bde809c9e5" extends="task" label="incident" max_length="40" name="incident" text_index="true" type="collection">
+        <element label="Resolution Group 1" max_length="32" name="u_resolution_group_1" reference="sys_user_group" type="reference"/>
+    </element>
+</database>
